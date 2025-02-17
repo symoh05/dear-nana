@@ -10,17 +10,17 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-start; /* Align card to the top */
+      min-height: 100vh; /* Ensure body takes at least the viewport height */
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       font-family: 'Arial', sans-serif;
-      overflow: hidden;
+      /* Removed overflow: hidden to allow scrolling */
     }
 
     .card {
       position: relative;
       width: 400px;
-      height: 800px; /* Increased height to accommodate larger slideshow */
+      height: 1200px; /* Increased height to make the card scrollable */
       background: linear-gradient(135deg, pink, white);
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -31,11 +31,12 @@
       justify-content: flex-start; /* Align content to the top */
       text-align: center;
       padding: 20px;
+      margin: 20px 0; /* Add margin to ensure spacing */
     }
 
     .slideshow {
       width: 100%;
-      height: 80%; /* Increased height ×2 (from 40% to 80%) */
+      height: 600px; /* Increased height for the slideshow */
       position: relative;
       overflow: hidden;
       border-radius: 15px;
@@ -64,7 +65,7 @@
       line-height: 1.5;
       text-align: left;
       width: 90%;
-      height: 20%; /* Adjusted height for the message container */
+      height: 500px; /* Increased height for the message container */
       overflow-y: auto; /* Make the message container scrollable */
       padding-right: 10px; /* Add padding to prevent text from touching the scrollbar */
     }
