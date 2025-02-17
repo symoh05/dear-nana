@@ -91,6 +91,30 @@
       animation: blink 0.7s infinite;
     }
 
+    .from-simon {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #555;
+      text-align: center;
+    }
+
+    .thanks-button {
+      display: none; /* Hidden by default */
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #25D366; /* WhatsApp green */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .thanks-button:hover {
+      background-color: #128C7E; /* Darker green on hover */
+    }
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
@@ -102,16 +126,16 @@
     }
 
     .slideshow img:nth-child(1) { animation-delay: 0s; }
-    .slideshow img:nth-child(2) { animation-delay: 3s; }
-    .slideshow img:nth-child(3) { animation-delay: 6s; }
-    .slideshow img:nth-child(4) { animation-delay: 9s; }
-    .slideshow img:nth-child(5) { animation-delay: 12s; }
-    .slideshow img:nth-child(6) { animation-delay: 15s; }
-    .slideshow img:nth-child(7) { animation-delay: 18s; }
-    .slideshow img:nth-child(8) { animation-delay: 21s; }
+    .slideshow img:nth-child(2) { animation-delay: 5s; } /* Increased delay to 5 seconds */
+    .slideshow img:nth-child(3) { animation-delay: 10s; }
+    .slideshow img:nth-child(4) { animation-delay: 15s; }
+    .slideshow img:nth-child(5) { animation-delay: 20s; }
+    .slideshow img:nth-child(6) { animation-delay: 25s; }
+    .slideshow img:nth-child(7) { animation-delay: 30s; }
+    .slideshow img:nth-child(8) { animation-delay: 35s; }
 
     .slideshow img {
-      animation: fadeInOut 24s infinite;
+      animation: fadeInOut 40s infinite; /* Adjusted animation duration */
     }
   </style>
 </head>
@@ -132,10 +156,15 @@
       <div id="typed-text"></div>
       <div class="cursor"></div>
     </div>
+    <div class="from-simon">
+      From Simon
+    </div>
+    <a id="thanks-button" class="thanks-button" href="https://wa.me/254773743248?text=Thanks..." target="_blank">Thanks</a>
   </div>
 
   <script>
     const typedTextElement = document.getElementById('typed-text');
+    const thanksButton = document.getElementById('thanks-button');
     const messages = [
       "Dear Nana, 🎉",
       "On your special day, I want you to know how amazing you are! 🌟",
@@ -168,6 +197,13 @@
         }
       }
     }
+
+    // Show the "Thanks" button when the user scrolls to the bottom
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        thanksButton.style.display = 'block';
+      }
+    });
 
     typeText();
   </script>
