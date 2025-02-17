@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <style>
+    /* Use the same gradient background as your original code */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .loading-container {
+      text-align: center;
+    }
+
+    .loading-bar {
+      width: 300px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .loading-progress {
+      width: 0;
+      height: 100%;
+      background-color: #ff6f61; /* Use a color from your original design */
+      border-radius: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .loading-gifts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 5px;
+      box-sizing: border-box;
+    }
+
+    .loading-gifts span {
+      font-size: 20px;
+      color: #fff;
+      margin-right: 5px;
+    }
+
+    .loading-text {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <!-- Loading Bar -->
+    <div class="loading-bar">
+      <div class="loading-progress" id="loading-progress"></div>
+      <div class="loading-gifts" id="loading-gifts"></div>
+    </div>
+
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
+  </div>
+
+  <script>
+    const loadingProgress = document.getElementById('loading-progress');
+    const loadingGifts = document.getElementById('loading-gifts');
+    const totalDuration = 5000; // 5 seconds
+    const interval = 100; // Update every 100ms
+    const totalSteps = totalDuration / interval;
+    let currentStep = 0;
+
+    // Function to update the loading bar and gifts
+    function updateLoading() {
+      if (currentStep <= totalSteps) {
+        const progress = (currentStep / totalSteps) * 100;
+        loadingProgress.style.width = `${progress}%`;
+
+        // Add a gift emoji for every 10% progress
+        if (progress % 10 === 0) {
+          const gift = document.createElement('span');
+          gift.textContent = '🎁';
+          loadingGifts.appendChild(gift);
+        }
+
+        currentStep++;
+        setTimeout(updateLoading, interval);
+      } else {
+        // Redirect to home.html after loading is complete
+        window.location.href = "home.html";
+      }
+    }
+
+    // Start the loading animation
+    updateLoading();
+  </script>
+</body>
+</html>
